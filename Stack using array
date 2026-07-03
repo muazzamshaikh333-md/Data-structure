@@ -1,0 +1,80 @@
+#include <iostream>
+using namespace std;
+
+int stack[100], top = -1;
+
+void push(int value) {
+    if (top == 99)
+        cout << "Stack Overflow\n";
+    else {
+        stack[++top] = value;
+        cout << "Element Pushed\n";
+    }
+}
+
+void pop() {
+    if (top == -1)
+        cout << "Stack Underflow\n";
+    else
+        cout << "Deleted Element: " << stack[top--] << endl;
+}
+
+void peek() {
+    if (top == -1)
+        cout << "Stack is Empty\n";
+    else
+        cout << "Top Element: " << stack[top] << endl;
+}
+
+void display() {
+    if (top == -1)
+        cout << "Stack is Empty\n";
+    else {
+        for (int i = top; i >= 0; i--)
+            cout << stack[i] << " ";
+        cout << endl;
+    }
+}
+
+int main() {
+    int choice, value;
+
+    do {
+        cout << "\n1. Push";
+        cout << "\n2. Pop";
+        cout << "\n3. Peek";
+        cout << "\n4. Display";
+        cout << "\n5. Exit";
+        cout << "\nEnter Choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                cout << "Enter Value: ";
+                cin >> value;
+                push(value);
+                break;
+
+            case 2:
+                pop();
+                break;
+
+            case 3:
+                peek();
+                break;
+
+            case 4:
+                display();
+                break;
+
+            case 5:
+                cout << "Thank You";
+                break;
+
+            default:
+                cout << "Invalid Choice";
+        }
+    } while (choice != 5);
+
+    return 0;
+}
